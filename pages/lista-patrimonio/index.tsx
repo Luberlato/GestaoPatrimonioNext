@@ -1,6 +1,21 @@
-import style from "./detalheProduto.module.css"
+import { useState } from "react"
+import style from "./listaPatrimonio.module.css"
 
-const PatrimonioDetalhes = () => {
+
+interface Categoria{
+    categoriaId: string,
+    nome: string
+}
+
+
+const Patrimonio = () => {
+
+    const[categorias, setCategorias] = useState<Categoria[]>([]);
+
+    const[denominacao, setDenominacao] = useState<string>("")
+
+    
+
     return (
         <>
             <header className={style.topbar}>
@@ -11,7 +26,7 @@ const PatrimonioDetalhes = () => {
 
                     <ul className={style.menuList}>
                         <li>
-                            <a href="#" className={style.menuLink}>
+                            <a href="/lista-ambiente" className={style.menuLink}>
                                 Ambientes
                                 <i className="fa-solid fa-chevron-down"></i>
                             </a>
@@ -115,4 +130,4 @@ const PatrimonioDetalhes = () => {
     )
 }
 
-export default PatrimonioDetalhes;
+export default Patrimonio;

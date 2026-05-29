@@ -21,7 +21,7 @@ const Login = () => {
             notificacao("Login bem sucedido");
 
             setTimeout(() => {
-                router.push("/detalhe-produto");
+                router.push("/lista-patrimonio");
             }, 2000);
         }
         catch(error: any){
