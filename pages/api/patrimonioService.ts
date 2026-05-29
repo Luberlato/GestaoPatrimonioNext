@@ -11,7 +11,7 @@ type PatrimonioFormulario = {
 }
 
 interface PatrimonioListagem{
-    denominaca: string,
+    denominacao: string,
     numeroPatrimonio: string,
     valor: number
 }
@@ -21,11 +21,11 @@ export async function listarPatrimonio(){
     try{
         const response = await api.get("Patrimonio");
 
-        const patrimonios = response.data.map((patrimonio: PatrimonioListagem) => ({
-            ...patrimonio
-        }));
-
-        return patrimonios
+        // const patrimonios = response.data.map((patrimonio: PatrimonioListagem) => ({
+        //     ...patrimonio
+        // }));
+        console.log(response.data);
+        return response.data;
     }
 
      catch(error: any){

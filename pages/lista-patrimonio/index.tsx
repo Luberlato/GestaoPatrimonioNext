@@ -1,18 +1,42 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import style from "./listaPatrimonio.module.css"
+import { useRouter } from "next/router";
+import { listarPatrimonio, listarPorId } from "../api/patrimonioService";
 
 
-interface Categoria{
-    categoriaId: string,
-    nome: string
-}
 
 
 const Patrimonio = () => {
 
-    const[categorias, setCategorias] = useState<Categoria[]>([]);
+    const[denominacao, setDenominacao] = useState<string>("");
+    const[numeroPatrimonio, setNumeroPatrimonio] = useState<string>("");
+    const[valor, setValor] = useState<number>();
+    const[estaAutenticado, setEstaAutenticado] = useState(false);
 
-    const[denominacao, setDenominacao] = useState<string>("")
+    // const router = useRouter();
+    // const id = router.query.id;
+    // let telaEditar = id ? true : false;
+
+    async function carregarInformacoes() {
+        // if(!id) return;
+
+        const patrimonio = await listarPatrimonio();
+
+        console.log(patrimonio);
+
+
+        setDenominacao(patrimonio.denominacao);
+        setNumeroPatrimonio(patrimonio.numeroPatrimonio);
+        setValor(patrimonio.valor);
+
+        console.log(patrimonio);
+    }
+
+
+    useEffect(() => {
+        carregarInformacoes();
+    },[])
+
 
     
 
